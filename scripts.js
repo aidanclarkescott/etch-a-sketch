@@ -2,8 +2,9 @@
 const container = document.querySelector("#container");
 const clearBtn = document.querySelector("#clear-btn");
 const eraserBtn = document.querySelector("#eraser-btn");
-const blackPenBtn = document.querySelector("#black-pen");
 const resizeBtn = document.querySelector("#resize-btn");
+const blackPenBtn = document.querySelector("#black-pen");
+const colourPenBtn = document.querySelector("#colour-pen");
 
 //Functions
 function createGrid(size) {
@@ -20,6 +21,7 @@ function createGrid(size) {
 function clear() {
   const boxes = document.querySelectorAll(".grid-box, .grid-box-black");
   Array.from(boxes).forEach((element) => {
+    element.style.removeProperty("background-color");
     element.classList.remove("grid-box-black");
     element.classList.add("grid-box");
   });
@@ -32,14 +34,20 @@ function blackPen() {
       if (e.buttons == 1) {
         element.classList.add("grid-box-black");
         element.classList.remove("grid-box");
+        element.style.removeProperty("background-color");
       }
     });
 
     element.addEventListener("click", (e) => {
       element.classList.add("grid-box-black");
       element.classList.remove("grid-box");
+      element.style.removeProperty("background-color");
     });
   });
+}
+
+function randomColor() {
+  return Math.floor(Math.random() * 256);
 }
 
 // Event Listeners & Initialization
@@ -61,14 +69,31 @@ eraserBtn.addEventListener("click", (e) => {
   Array.from(boxes).forEach((element) => {
     element.addEventListener("mouseover", (e) => {
       if (e.buttons == 1) {
+        element.style.removeProperty("background-color");
         element.classList.remove("grid-box-black");
         element.classList.add("grid-box");
       }
     });
 
     element.addEventListener("click", (e) => {
+      element.style.removeProperty("background-color");
       element.classList.remove("grid-box-black");
       element.classList.add("grid-box");
+    });
+  });
+});
+
+colourPenBtn.addEventListener("click", (e) => {
+  const boxes = document.querySelectorAll(".grid-box, .grid-box-black");
+  Array.from(boxes).forEach((element) => {
+    element.addEventListener("mouseover", (e) => {
+      if (e.buttons == 1) {
+        element.style.backgroundColor = `rgb(${randomColor()}, ${randomColor()}, ${randomColor()})`;
+      }
+    });
+
+    element.addEventListener("click", (e) => {
+      element.style.backgroundColor = `rgb(${randomColor()}, ${randomColor()}, ${randomColor()})`;
     });
   });
 });
