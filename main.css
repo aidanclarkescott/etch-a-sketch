@@ -33,7 +33,7 @@ button {
 #container {
   margin: auto;
   width: 650px;
-  height: 650px;
+  height: 550px;
   display: grid;
   border: 1px solid #ccc;
   border-radius: 4px;
