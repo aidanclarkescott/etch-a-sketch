@@ -51,7 +51,7 @@ function randomColor() {
 }
 
 // Event Listeners & Initialization
-createGrid(16);
+createGrid(20);
 blackPen();
 
 clearBtn.addEventListener("click", clear);
