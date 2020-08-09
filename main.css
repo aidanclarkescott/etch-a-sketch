@@ -32,8 +32,8 @@ button {
 
 #container {
   margin: auto;
-  width: 650px;
-  height: 650px;
+  width: 500px;
+  height: 500px;
   display: grid;
   border: 1px solid #ccc;
   border-radius: 4px;
